@@ -7,9 +7,12 @@
     "test": "test"
   },
   "dependencies": {
-    "babel-loader": "^6.2.5"
+    "babel-loader": "^6.2.5",
+    "react": "^15.3.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "babel-core": "^6.17.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
