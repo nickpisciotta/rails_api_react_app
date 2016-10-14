@@ -10,10 +10,12 @@ let mockTweets = [
 class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { tweetsList: mockTweets}; 
+    this.state = { tweetsList: mockTweets};
+    newTweetsList.unshift({id: Date.now() , name: "Guest", body: tweetToAdd })
+    this.setState({ tweetsList: newTweetsList })
   }
   addTweet(tweetToAdd) {
-
+    let newTweetsList = this.state.tweestList;
   }
   render() {
     return (

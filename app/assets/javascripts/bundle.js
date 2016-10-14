@@ -78,12 +78,16 @@
 	    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
 	
 	    _this.state = { tweetsList: mockTweets };
+	    newTweetsList.unshift({ id: Date.now(), name: "Guest", body: tweetToAdd });
+	    _this.setState({ tweetsList: newTweetsList });
 	    return _this;
 	  }
 	
 	  _createClass(Main, [{
 	    key: "addTweet",
-	    value: function addTweet(tweetToAdd) {}
+	    value: function addTweet(tweetToAdd) {
+	      var newTweetsList = this.state.tweestList;
+	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
