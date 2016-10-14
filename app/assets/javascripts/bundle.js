@@ -55,6 +55,10 @@
 	
 	var _TweetBox2 = _interopRequireDefault(_TweetBox);
 	
+	var _TweetsList = __webpack_require__(/*! ./components/TweetsList */ 3);
+	
+	var _TweetsList2 = _interopRequireDefault(_TweetsList);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -78,7 +82,8 @@
 	      return React.createElement(
 	        "div",
 	        { className: "container" },
-	        React.createElement(_TweetBox2.default, null)
+	        React.createElement(_TweetBox2.default, null),
+	        React.createElement(_TweetsList2.default, null)
 	      );
 	    }
 	  }]);
@@ -127,21 +132,25 @@
 	    key: "render",
 	    value: function render() {
 	      return React.createElement(
-	        "form",
-	        null,
+	        "div",
+	        { className: "row" },
 	        React.createElement(
-	          "div",
-	          { className: "input-field" },
-	          React.createElement("textarea", { className: "materialize-textarea" }),
+	          "form",
+	          null,
 	          React.createElement(
-	            "label",
-	            null,
-	            "What's happening?"
-	          ),
-	          React.createElement(
-	            "button",
-	            { className: "btn right" },
-	            "Tweet"
+	            "div",
+	            { className: "input-field" },
+	            React.createElement("textarea", { className: "materialize-textarea" }),
+	            React.createElement(
+	              "label",
+	              null,
+	              "What's happening?"
+	            ),
+	            React.createElement(
+	              "button",
+	              { className: "btn right" },
+	              "Tweet"
+	            )
 	          )
 	        )
 	      );
@@ -152,6 +161,93 @@
 	}(React.Component);
 	
 	exports.default = TweetBox;
+
+/***/ },
+/* 3 */
+/*!*******************************************************!*\
+  !*** ./app/assets/frontend/components/TweetsList.jsx ***!
+  \*******************************************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var TweetsList = function (_React$Component) {
+	  _inherits(TweetsList, _React$Component);
+	
+	  function TweetsList() {
+	    _classCallCheck(this, TweetsList);
+	
+	    return _possibleConstructorReturn(this, (TweetsList.__proto__ || Object.getPrototypeOf(TweetsList)).apply(this, arguments));
+	  }
+	
+	  _createClass(TweetsList, [{
+	    key: "render",
+	    value: function render() {
+	      return React.createElement(
+	        "div",
+	        null,
+	        React.createElement(
+	          "ul",
+	          { className: "collection" },
+	          React.createElement(
+	            "li",
+	            { className: "collection-item avatar" },
+	            React.createElement(
+	              "i",
+	              { className: "material-icons circle green" },
+	              "person_pin"
+	            ),
+	            React.createElement(
+	              "span",
+	              { className: "title" },
+	              "Nick Pisciotta"
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              "My First Tweet  "
+	            )
+	          ),
+	          React.createElement(
+	            "li",
+	            { className: "collection-item avatar" },
+	            React.createElement(
+	              "i",
+	              { className: "material-icons circle green" },
+	              "person_pin"
+	            ),
+	            React.createElement(
+	              "span",
+	              { className: "title" },
+	              "Nick Pisciotta"
+	            ),
+	            React.createElement(
+	              "p",
+	              null,
+	              "My First Tweet  "
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return TweetsList;
+	}(React.Component);
+	
+	exports.default = TweetsList;
 
 /***/ }
 /******/ ]);
