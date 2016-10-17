@@ -51,11 +51,11 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _TweetBox = __webpack_require__(/*! ./components/TweetBox */ 2);
+	var _TweetBox = __webpack_require__(/*! ./components/TweetBox */ 1);
 	
 	var _TweetBox2 = _interopRequireDefault(_TweetBox);
 	
-	var _TweetsList = __webpack_require__(/*! ./components/TweetsList */ 3);
+	var _TweetsList = __webpack_require__(/*! ./components/TweetsList */ 2);
 	
 	var _TweetsList2 = _interopRequireDefault(_TweetsList);
 	
@@ -80,19 +80,36 @@
 	  }
 	
 	  _createClass(Main, [{
+	    key: "formattedTweets",
+	    value: function formattedTweets(tweetsList) {
+	      var formattedList = tweetsList.map(function (tweet) {
+	        tweet.formattedDate = moment(tweet.created_at).fromNow();
+	        return tweet;
+	      });
+	      return {
+	        tweetsList: formattedList
+	      };
+	    }
+	  }, {
 	    key: "addTweet",
 	    value: function addTweet(tweetToAdd) {
-	      var newTweetsList = this.state.tweetsList;
-	      newTweetsList.unshift({ id: Date.now(), name: "Guest", body: tweetToAdd });
-	      this.setState({ tweetsList: newTweetsList });
+	      var _this2 = this;
+	
+	      $.post("/tweets", { body: tweetToAdd }).success(function (savedTweet) {
+	        var newTweetsList = _this2.state.tweetsList;
+	        newTweetsList.unshift(savedTweet);
+	        _this2.setState(_this2.formattedTweedfdts(newTweetsList));
+	      }).error(function (error) {
+	        return console.log(error);
+	      });
 	    }
 	  }, {
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
-	      var _this2 = this;
+	      var _this3 = this;
 	
 	      $.ajax('/tweets').success(function (data) {
-	        return _this2.setState({ tweetsList: data });
+	        return _this3.setState(_this3.formattedTweets(data));
 	      }).error(function (error) {
 	        return console.log(error);
 	      });
@@ -122,8 +139,7 @@
 	$(documentReady);
 
 /***/ },
-/* 1 */,
-/* 2 */
+/* 1 */
 /*!*****************************************************!*\
   !*** ./app/assets/frontend/components/TweetBox.jsx ***!
   \*****************************************************/
@@ -194,7 +210,7 @@
 	exports.default = TweetBox;
 
 /***/ },
-/* 3 */
+/* 2 */
 /*!*******************************************************!*\
   !*** ./app/assets/frontend/components/TweetsList.jsx ***!
   \*******************************************************/
@@ -210,7 +226,7 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
-	var _Tweet = __webpack_require__(/*! ./Tweet */ 4);
+	var _Tweet = __webpack_require__(/*! ./Tweet */ 3);
 	
 	var _Tweet2 = _interopRequireDefault(_Tweet);
 	
@@ -255,7 +271,7 @@
 	exports.default = TweetsList;
 
 /***/ },
-/* 4 */
+/* 3 */
 /*!**************************************************!*\
   !*** ./app/assets/frontend/components/Tweet.jsx ***!
   \**************************************************/
@@ -291,14 +307,19 @@
 	        "li",
 	        { className: "collection-item avatar" },
 	        React.createElement(
-	          "i",
-	          { className: "material-icons circle green" },
-	          "person_pin"
+	          "image",
+	          { className: "circle" },
+	          this.props.gravatar
 	        ),
 	        React.createElement(
 	          "span",
 	          { className: "title" },
 	          this.props.name
+	        ),
+	        React.createElement(
+	          "time",
+	          null,
+	          this.props.formattedDate
 	        ),
 	        React.createElement(
 	          "p",
