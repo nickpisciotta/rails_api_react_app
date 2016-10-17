@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "babel-loader": "^6.2.5",
+    "events": "^1.1.1",
+    "flux": "^3.0.0",
     "react": "^15.3.2"
   },
   "devDependencies": {
