@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'profile' => "profile#index"
   patch 'profile' => 'profile#update'
 
-  resources :followers do
+  resources :followers do |r| 
     collection do
       get "random"
     end
