@@ -1,8 +1,9 @@
-import TweetBox from "./components/TweetBox"
-import TweetsList from "./components/TweetsList"
-import TweetStore from "./stores/TweetStore"
+import React from 'react';
+import TweetBox from "./TweetBox"
+import TweetsList from "./TweetsList"
+import TweetStore from "../stores/TweetStore"
 
-import TweetActions from "./actions/TweetActions"
+import TweetActions from "../actions/TweetActions"
 TweetActions.getAllTweets();
 
 let getAppState = () => {
