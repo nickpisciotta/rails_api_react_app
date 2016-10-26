@@ -28954,7 +28954,7 @@
   \***************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -28966,7 +28966,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _UserStore = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../stores/UserStore\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _UserStore = __webpack_require__(/*! ../stores/UserStore */ 249);
 	
 	var _UserStore2 = _interopRequireDefault(_UserStore);
 	
@@ -28990,32 +28990,32 @@
 	
 	    var _this = _possibleConstructorReturn(this, (Follow.__proto__ || Object.getPrototypeOf(Follow)).call(this, props));
 	
-	    _this.state = getAppState();
+	    _this.state = getAppStore();
 	    return _this;
 	  }
 	
 	  _createClass(Follow, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
 	      var users = this.state.users.map(function (user) {
 	        return _react2.default.createElement(
-	          "li",
-	          { className: "collection-item avatar" },
-	          _react2.default.createElement("img", { src: user.gravatar, className: "circle" }),
+	          'li',
+	          { className: 'collection-item avatar' },
+	          _react2.default.createElement('img', { src: user.gravatar, className: 'circle' }),
 	          _react2.default.createElement(
-	            "span",
-	            { className: "title" },
+	            'span',
+	            { className: 'title' },
 	            user.name
 	          )
 	        );
 	      });
 	      return _react2.default.createElement(
-	        "div",
+	        'div',
 	        null,
 	        _react2.default.createElement(
-	          "h3",
+	          'h3',
 	          null,
-	          " Who to Follow"
+	          ' Who to Follow'
 	        )
 	      );
 	    }
@@ -29027,7 +29027,72 @@
 	exports.default = Follow;
 
 /***/ },
-/* 249 */,
+/* 249 */
+/*!**************************************************!*\
+  !*** ./app/assets/frontend/stores/UserStore.jsx ***!
+  \**************************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _dispatcher = __webpack_require__(/*! ../dispatcher */ 7);
+	
+	var _dispatcher2 = _interopRequireDefault(_dispatcher);
+	
+	var _constants = __webpack_require__(/*! ../constants */ 12);
+	
+	var _constants2 = _interopRequireDefault(_constants);
+	
+	var _AppEventEmitter2 = __webpack_require__(/*! ./AppEventEmitter */ 250);
+	
+	var _AppEventEmitter3 = _interopRequireDefault(_AppEventEmitter2);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var _users = [{ name: "DHH" }];
+	
+	var UserEventEmitter = function (_AppEventEmitter) {
+	  _inherits(UserEventEmitter, _AppEventEmitter);
+	
+	  function UserEventEmitter() {
+	    _classCallCheck(this, UserEventEmitter);
+	
+	    return _possibleConstructorReturn(this, (UserEventEmitter.__proto__ || Object.getPrototypeOf(UserEventEmitter)).apply(this, arguments));
+	  }
+	
+	  _createClass(UserEventEmitter, [{
+	    key: "getAll",
+	    value: function getAll() {
+	      return _users;
+	    }
+	  }]);
+	
+	  return UserEventEmitter;
+	}(_AppEventEmitter3.default);
+	
+	var UserStore = new UserEventEmitter();
+	
+	_dispatcher2.default.register(function (action) {
+	  switch (action.actionType) {
+	    default:
+	  }
+	});
+	
+	exports.default = UserStore;
+
+/***/ },
 /* 250 */
 /*!********************************************************!*\
   !*** ./app/assets/frontend/stores/AppEventEmitter.jsx ***!

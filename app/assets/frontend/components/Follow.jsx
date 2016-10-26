@@ -1,5 +1,5 @@
 import React from 'react';
-import UserStore from "../stores/UserStore";
+import UserStore from '../stores/UserStore';
 
 let getAppStore = () => {
   return { users: UserStore.getAll() };
@@ -7,7 +7,7 @@ let getAppStore = () => {
 export default class Follow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = getAppState();
+    this.state = getAppStore();
   }
   render() {
     let users = this.state.users.map(user => {
